@@ -10,8 +10,8 @@ D: delay::DelayMs<u8> {
     /// Create new instance of the SPS30 device
     pub fn new_sps30(i2c: I2C, delay: D) -> Self {
         Sps30 {
-            i2c: i2c,
-            delay: delay,
+            i2c,
+            delay,
             address: DEV_ADDR,
         }
     }
@@ -25,9 +25,7 @@ D: delay::DelayMs<u8> {
     /// Command execution time: 20 ms
     pub fn start_measurement(&mut self) -> Result<(), Error<E>> {
         let mut data: [u8; 5] = [0; 5];
-        for i in 0..2 {
-            data[i] = Register::START_MEASUREMENT[i];
-        }
+        data[..2].clone_from_slice(&Register::START_MEASUREMENT[..2]);
         data[2] = 0x03;
     
         self.write_data(&mut data)?;
@@ -73,8 +71,8 @@ D: delay::DelayMs<u8> {
         self.read_data(&mut buffer)?;
 
         let air_info: AirInfo = AirInfo {
-            mass_pm1_0: BigEndian::read_f32(&buffer[4 * 0..]),
-            mass_pm2_5: BigEndian::read_f32(&buffer[4 * 1..]), 
+            mass_pm1_0: BigEndian::read_f32(&buffer[0..]),
+            mass_pm2_5: BigEndian::read_f32(&buffer[4..]), 
             mass_pm4_0: BigEndian::read_f32(&buffer[4 * 2..]),
             mass_pm10: BigEndian::read_f32(&buffer[4 * 3..]),
             number_pm0_5: BigEndian::read_f32(&buffer[4 * 4..]),
@@ -141,9 +139,7 @@ D: delay::DelayMs<u8> {
     /// Command execution time: 20 ms
     pub fn write_auto_cleaning_interval(&mut self, n: u32) -> Result<(), Error<E>> {
         let mut data: [u8; 8] = [0; 8];
-        for i in 0..2 {
-            data[i] = Register::READ_WRITE_AUTO_CLEANING_INTERVAL[i];
-        }
+        data[..2].clone_from_slice(&Register::READ_WRITE_AUTO_CLEANING_INTERVAL[..2]);
         BigEndian::write_u32(&mut data[2..], n);
 
         self.write_data(&mut data)?;
@@ -162,9 +158,7 @@ D: delay::DelayMs<u8> {
         self.read_data(&mut buffer)?;
         
         let mut res: [u8; 8] = [0; 8];
-        for i in 0..8 {
-            res[i] = buffer[i];
-        }
+        res[..8].clone_from_slice(&buffer[..8]);
 
         Ok(res)
     }
@@ -179,9 +173,7 @@ D: delay::DelayMs<u8> {
         self.read_data(&mut buffer)?;
 
         let mut res: [u8; 32] = [0; 32];
-        for i in 0..32 {
-            res[i] = buffer[i];
-        }
+        res[..32].clone_from_slice(&buffer[..32]);
 
         Ok(res)
     }
@@ -207,30 +199,18 @@ D: delay::DelayMs<u8> {
         let mut buffer: [u8; 6] = [0; 6];
         self.read_data(&mut buffer)?;
 
-        let res = BigEndian::read_u32(&mut buffer);
+        let res = BigEndian::read_u32(&buffer);
 
         let status_speed: bool = {
-            if res & StatusRegisterBits::SPEED  == 1{
-                true
-            } else {
-                false
-            }
+            (res & StatusRegisterBits::SPEED) != 0
         };
 
         let status_laser: bool = {
-            if res & StatusRegisterBits::LASER == 1 {
-                true
-            } else {
-                false
-            }
+            (res & StatusRegisterBits::LASER) != 0
         };
 
         let status_fan: bool = {
-            if res & StatusRegisterBits::FAN == 1 {
-                true
-            } else {
-                false
-            }
+            (res & StatusRegisterBits::FAN) != 0
         };
 
         Ok(StatusRegisterResult{

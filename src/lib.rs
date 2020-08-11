@@ -32,6 +32,7 @@
 //! [`wake_up()`]: struct.Sps30.html#method.wake_up
 //! [`start_fan_cleaning()`]: struct.Sps30.html#method.start_fan_cleaning
 //! [`read_auto_cleaning_interval()`]: struct.Sps30.html#method.read_auto_cleaning_interval
+//! [`write_auto_cleaning_interval()`]: struct.Sps30.html#method.write_auto_cleaning_interval
 //! [`read_device_product_type()`]: struct.Sps30.html#method.read_device_product_type
 //! [`read_device_serial_number()`]: struct.Sps30.html#method.read_device_serial_number
 //! [`read_firmware_version()`]: struct.Sps30.html#method.read_firmware_version

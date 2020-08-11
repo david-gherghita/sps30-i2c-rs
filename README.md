@@ -14,36 +14,21 @@ firmware version 2.1. Although it is fully compatible with older versions
 and the 2.2 version, it doesn't fully support the latest.
 
 This driver allows you to:
-- Enter measurement mode. See: [`start_measurement()`].
-- Exit measurement mode. See: [`stop_measurement`].
-- Poll for the availability of new measurements. See: [`read_data_ready_flag()`].
-- Read the measured values. See: [`read_measured_values()`].
-- Enter sleep mode. See: [`sleep()`].
-- Exit sleep mode. See: [`wake_up()`].
-- Start the fan-cleaning manually. See: [`start_fan_cleaning()`].
-- Read the interval[s] of the periodic fan-cleaning. See: [`read_auto_cleaning_interval()`].
-- Write the interval[s] of the periodic fan-cleaning. See: [`write_auto_cleaning_interval()`].
-- Read device product type. See: [`read_device_product_type()`].
-- Read device serial number. See: [`read_device_serial_number()`].
-- Read firmware version. See: [`read_firmware_version()`].
-- Read device status register. See: [`read_device_status_register()`].
-- Clear device status register. See: [`clear_device_status_register()`].
-- Reset the device. See: [`device_reset()`].
-
-[`start_measurement()`]: struct.Sps30.html#method.start_measurement
-[`stop_measurement`]: struct.Sps30.html#method.stop_measurement
-[`read_data_ready_flag()`]: struct.Sps30.html#method.read_data_ready_flag
-[`read_measured_values()`]: struct.Sps30.html#method.read_measured_values
-[`sleep()`]: struct.Sps30.html#method.sleep
-[`wake_up()`]: struct.Sps30.html#method.wake_up
-[`start_fan_cleaning()`]: struct.Sps30.html#method.start_fan_cleaning
-[`read_auto_cleaning_interval()`]: struct.Sps30.html#method.read_auto_cleaning_interval
-[`read_device_product_type()`]: struct.Sps30.html#method.read_device_product_type
-[`read_device_serial_number()`]: struct.Sps30.html#method.read_device_serial_number
-[`read_firmware_version()`]: struct.Sps30.html#method.read_firmware_version
-[`read_device_status_register()`]: struct.Sps30.html#method.read_device_status_register
-[`clear_device_status_register()`]: struct.Sps30.html#method.clear_device_status_register
-[`device_reset()`]: struct.Sps30.html#method.device_reset
+- Enter measurement mode. See: `start_measurement()`.
+- Exit measurement mode. See: `stop_measurement`.
+- Poll for the availability of new measurements. See: `read_data_ready_flag()`.
+- Read the measured values. See: `read_measured_values()`.
+- Enter sleep mode. See: `sleep()`.
+- Exit sleep mode. See: `wake_up()`.
+- Start the fan-cleaning manually. See: `start_fan_cleaning()`.
+- Read the interval[s] of the periodic fan-cleaning. See: `read_auto_cleaning_interval()`.
+- Write the interval[s] of the periodic fan-cleaning. See: `write_auto_cleaning_interval()`.
+- Read device product type. See: `read_device_product_type()`.
+- Read device serial number. See: `read_device_serial_number()`.
+- Read firmware version. See: `read_firmware_version()`.
+- Read device status register. See: `read_device_status_register()`.
+- Clear device status register. See: `clear_device_status_register()`.
+- Reset the device. See: `device_reset()`.
 
 ## The device
 

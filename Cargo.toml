@@ -5,16 +5,19 @@ authors = ["David Gherghita <davidgherghita@gmail.com>"]
 license = "MIT OR Apache-2.0"
 description = "Platform-agnostic Rust driver for the SPS30 particulate matter sensor"
 readme = "README.md"
-keywords = ["particulate matter", "sensor", "embedded-hal-driver"]
+keywords = ["sensor", "driver", "i2c", "embedded-hal-driver"]
 categories = ["embedded", "hardware-support", "no-std"]
 homepage = "https://github.com/david-gherghita/sps30-i2c-rs"
 documentation = "https://docs.rs/sps30-i2c"
 edition = "2018"
 
+[badges]
+travis-ci = { repository = "david-gherghita/sps30-i2c-rs", branch = "master" }
+
 [dependencies]
-embedded-hal = "0.2.4"
-byteorder = "1.3.4"
+embedded-hal = "0.2"
+byteorder = { version = "1", default-features = false }
 
 [dev-dependencies]
-linux-embedded-hal = "0.3.0"
-embedded-hal-mock = "0.7.2"
+linux-embedded-hal = "0.3"
+embedded-hal-mock = "0.7"
