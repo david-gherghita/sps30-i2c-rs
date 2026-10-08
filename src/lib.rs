@@ -69,7 +69,8 @@
 //! then instantiate the device.
 //! 
 //! Please see examples folder.
-
+//! 
+//!
 #![deny(missing_docs, rust_2018_idioms, unsafe_code, unused_qualifications, warnings)]
 #![no_std]
 
@@ -77,6 +78,8 @@ mod crc;
 mod register_access;
 mod sps30;
 mod types;
+
+pub use types::{AirInfo, Error, StatusRegisterResult};
 
 /// SPS30 device driver
 pub struct Sps30<I2C, D> {
